@@ -224,6 +224,14 @@
         input {
             font-size: 22px;
         }
+        #success-msg{
+           color: green;
+           margin-top: 16px;
+        }
+        #error-msg{
+            color: rgb(128, 0, 0);
+            margin-top: 16px;
+        }
     </style>
 </head>
 <body>
@@ -385,8 +393,8 @@
             <div class="loader"></div>
             <span class="processing">Processing...</span>
         </div>
-        <div style="color: green; margin-top: 16px;" class="hidden">✔Action completed successfully.</div>
-        <div style="color: rgb(128, 0, 0); margin-top: 16px;" class="hidden">✘Action failed.</div>
+        <div id="success-msg" class="hidden">✔Action completed successfully.</div>
+        <div id="error-msg" class="hidden">✘Action failed.</div>
 
     </div>
     <script>
