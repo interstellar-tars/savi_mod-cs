@@ -190,7 +190,7 @@
     <script src="buttons.js"></script>
     <div class="section">
         <span>Customer Service & Moderation</span>
-        <div class="welcome">Hi AdminUsername (<a href="#">logout</a>)</div>
+        <div class="welcome">Hi <span id="userDisplay">AdminUsername</span>(<a href="#">logout</a>)</div>
     </div>
     <!--
         button {
@@ -206,7 +206,7 @@
         <h3>User Admin</h3>
         <hr style=";">
         <ul>
-            <li><a href="userlookup.html">Find user</a></li>
+            <li><a href="findusers.html">Find user</a></li>
             <li><a href="usertransactions.html">User Transactions</a></li>
             <li><a href="userpm.html">Send Personal Message</a></li>
             <li><a href="usermessage.html">Preset Message</a></li>
@@ -268,5 +268,20 @@
             });
         });
     </script>
+        </script>
+          <script>
+    // Function to read a cookie by name
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Get the "username" cookie and display it
+    const username = getCookie("username");
+    if (username) {
+      document.getElementById("userDisplay").textContent = username;
+    }
+  </script>
 </body>
 </html>
