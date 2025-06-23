@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8" />
     <title>Moderation Dashboard - Savi</title>
@@ -13,20 +12,24 @@
             display: flex;
             zoom: 67%;
         }
+
         .sidebar {
-          margin-top: 70px;
-          margin-left: 40px;
-          margin-right: 40px;
-          margin-bottom: 0;
-          width: 350px; /* Adjust the width as needed */
-          border-top: 1px solid #2578BB;
-          border-right: 1px solid #2578BB;
-          border-left: 1px solid #2578BB;
-          border-bottom: 1px solid #2578BB;
-          border-radius: 6px; /* Adjust the border radius as needed */
-          z-index: 1;
-          overflow-y: auto;
+            margin-top: 70px;
+            margin-left: 40px;
+            margin-right: 40px;
+            margin-bottom: 0;
+            width: 350px;
+            /* Adjust the width as needed */
+            border-top: 1px solid #2578BB;
+            border-right: 1px solid #2578BB;
+            border-left: 1px solid #2578BB;
+            border-bottom: 1px solid #2578BB;
+            border-radius: 6px;
+            /* Adjust the border radius as needed */
+            z-index: 1;
+            overflow-y: auto;
         }
+
         .section {
             border-bottom: 4px solid #e0e0e0;
             background-color: #f4f4f4;
@@ -36,24 +39,29 @@
             position: absolute;
             justify-content: space-between;
         }
+
         .welcome {
             float: right;
         }
+
         .home {
             position: absolute;
             margin-top: 55px;
         }
+
         .main-content {
             flex-grow: 1;
             padding: 20px;
             margin-top: 70px;
         }
+
         h1 {
             margin-top: 0;
             font-weight: normal;
             position: absolute;
             margin-top: 30px;
         }
+
         h2 {
             font-size: 18px;
             color: white;
@@ -63,48 +71,60 @@
             height: 15px;
             font-weight: normal;
         }
+
         h3 {
             margin-left: 15px;
             font-size: 16px;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
             margin-left: 15px;
         }
+
         li {
             margin-bottom: 5px;
         }
+
         a {
             text-decoration: none;
             color: #3498db;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .form-group {
             margin-bottom: 20px;
             margin-top: 30px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
         }
+
         input[type="radio"] {
             margin-right: 5px;
             height: 15px;
         }
-        select, textarea {
+
+        select,
+        textarea {
             width: 100%;
             padding: 5px;
             margin-top: 5px;
         }
+
         textarea {
             height: 100px;
         }
+
         button {
             height: 50px;
             width: 90px;
@@ -114,73 +134,93 @@
             font-size: 20px;
             margin-left: 8px;
         }
+
         select {
             width: 400px;
         }
+
         textarea {
             width: 388px;
         }
+
         hr {
             width: 90%;
             margin-left: 16px;
             border: 1px solid #e0e0e0;
             border-radius: 1em;
         }
+
         .gray {
             color: gray;
         }
+
         .secondhr {
             margin-left: 0px;
             width: 252px;
             margin-top: 12px;
         }
+
         .bold {
             font-weight: bold;
         }
+
         .lookup {
             margin-left: 48px;
             height: 36px;
             width: 256px;
             border-radius: 4px;
         }
+
         .marginleft {
             margin-left: 16px;
         }
+
         .margintop {
             margin-top: 8px;
         }
+
         .marginright {
             margin-left: 20px;
         }
+
         .marginright2 {
             margin-left: 9px;
         }
+
         button:hover {
             cursor: pointer;
         }
+
         button:active {
             background-color: #2068a0;
         }
+
         .resultstable {
             margin-top: 96px;
             position: absolute;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid;
             border-color: lightgray;
             padding: 2vh;
             text-align: left;
         }
+
         .bigger {
             font-size: 20px;
         }
+
         .red {
             background-color: red;
             color: red;
         }
+
         .hidden {
             display: none;
         }
+
         input {
             font-size: 22px;
         }
@@ -345,33 +385,18 @@
             <div class="loader"></div>
             <span class="processing">Processing...</span>
         </div>
-        <div class="hidden">
-            <span style="color: green; margin-top: 16px;">✔Action completed successfully.</span>
-        </div>
-        <div class="hidden">
-            <span style="color: rgb(128, 0, 0); margin-top: 16px;">✘Action failed.</span>
-        </div>
+        <div id="success-msg" class="hidden">✔Action completed successfully.</div>
+        <div id="error-msg" class="hidden">✘Action failed.</div>
+
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Select all buttons on the page
-            const buttons = document.querySelectorAll('button');
+        document.querySelector("button").addEventListener("click", () => {
+            document.querySelector(".loading").classList.remove("hidden");
 
-            // Add a click event listener to each button
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    setTimeout(() => {
-
-                        // Select all elements with the class "results hidden"
-                        const hiddenElements = document.querySelectorAll('.hidden');
-
-                        // Loop through the hidden elements and remove the "hidden" class
-                        hiddenElements.forEach(element => {
-                            element.classList.remove('hidden');
-                        });
-                    }, 800);
-                });
-            });
+            setTimeout(() => {
+                document.querySelector(".loading").classList.add("hidden");
+                document.getElementById("success-msg").classList.remove("hidden");
+            }, 1500);
         });
     </script>
 </body>
