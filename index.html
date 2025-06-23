@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>Login - Savi</title>
     <link rel="icon" type="image/x-icon" href="/dole.ico">
@@ -412,6 +413,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="Signin" data-focus-on="username">
@@ -430,5 +432,11 @@
         <p id="wp" style="color: red; width: 250px; margin-top: 15px;"></p>
 
     </div>
+    <script>
+        // Set a cookie named "username" with value "Admin"
+        document.cookie = "username=Admin; path=/; max-age=31536000"; // 1 year
+    </script>
+
 </body>
+
 </html>
