@@ -432,10 +432,44 @@
         <p id="wp" style="color: red; width: 250px; margin-top: 15px;"></p>
 
     </div>
-    <script>
-        // Set a cookie named "username" with value "Admin"
-        document.cookie = "username=Admin; path=/; max-age=31536000"; // 1 year
-    </script>
+        <script>
+            const validUsers = {
+                "Admin": {
+                    password: "Rbx.Jira45",
+                    token: "admintoken-xyz123"
+                },
+                "MangoMarc": {
+                    password: "MangoMarc",
+                    token: "modtoken-abc456"
+                },
+                "LoveNorSadJames": {
+                    password: "Rbx.Jira45",
+                    token: "viewtoken-def789"
+                }
+            };
+
+            function sendGetRequest() {
+                const username = document.getElementById("UserName").value.trim();
+                const password = document.getElementById("password").value;
+                const errorDisplay = document.getElementById("wp");
+
+                if (!username || !password) {
+                    errorDisplay.textContent = "Please enter both username and password.";
+                    return;
+                }
+
+                const user = validUsers[username];
+
+                if (user && user.password === password) {
+                    document.cookie = `username=${encodeURIComponent(username)}; path=/; max-age=31536000`;
+                    document.cookie = `token=${encodeURIComponent(user.token)}; path=/; max-age=31536000`;
+
+                    location.href = "/dashboard.html"; 
+                } else {
+                    errorDisplay.textContent = "Invalid username or password.";
+                }
+            }
+        </script>
     
 </body>
 
