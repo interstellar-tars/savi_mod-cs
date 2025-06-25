@@ -329,9 +329,9 @@
             <br>
             <center>
             <div class="chat">
-                <a class="chat-id">0123</a>
+                <div class="chat-id">0123</div>
                 <br>
-                <a class="chat-main">Hello there...</a>
+                <div class="chat-main">Hello there...</div>
             </div>
             </center>
             <br>
@@ -348,39 +348,52 @@
         </div>
         </center>
     </div>
-          <script>
-    // Function to read a cookie by name
-    function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const startButton = document.querySelector(".btn-med-start");
+            const startPanel = document.querySelector(".start");
+            const reviewContainer = document.querySelector(".review-container");
 
-    // Get the "username" cookie and display it
-    const username = getCookie("username");
-    if (username) {
-      document.getElementById("userDisplay").textContent = username;
-    }
-  </script>
-  <script>
-    // Attach logout logic to all <a> tags with text "logout"
-    document.addEventListener("DOMContentLoaded", function () {
-        const logoutLinks = Array.from(document.querySelectorAll('a'))
-            .filter(link => link.textContent.trim().toLowerCase() === "logout");
-
-        logoutLinks.forEach(link => {
-            link.addEventListener("click", function (e) {
-                e.preventDefault();
-
-                // Clear the cookies by setting them to expire
-                document.cookie = "username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-
-                // Redirect to login or homepage
-                window.location.href = "/login.html"; // Change as needed
+            startButton.addEventListener("click", function () {
+                startPanel.classList.add("hidden");
+                reviewContainer.classList.remove("hidden");
             });
         });
-    });
-</script>
+    </script>
+    
+    <script>
+        // Function to read a cookie by name
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Get the "username" cookie and display it
+        const username = getCookie("username");
+        if (username) {
+            document.getElementById("userDisplay").textContent = username;
+        }
+    </script>
+    <script>
+        // Attach logout logic to all <a> tags with text "logout"
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoutLinks = Array.from(document.querySelectorAll('a'))
+                .filter(link => link.textContent.trim().toLowerCase() === "logout");
+
+            logoutLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    // Clear the cookies by setting them to expire
+                    document.cookie = "username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
+                    // Redirect to login or homepage
+                    window.location.href = "/login.html"; // Change as needed
+                });
+            });
+        });
+    </script>
 </body>
 </html>
