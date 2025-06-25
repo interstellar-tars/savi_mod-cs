@@ -395,5 +395,48 @@
             });
         });
     </script>
+    <script>
+        const chatThread = [
+            "Hey, how’s your day?",
+            "All good, just bored lol",
+            "Wanna do something crazy?",
+            "What kind of crazy?",
+            "Something illegal maybe 😈",
+            "Haha stop you're nuts",
+            "You down though?",
+            "I’m not sure, like what?",
+            "Rob a bank 😅",
+            "This is where I stop replying lol",
+            "Come on don't be boring",
+            "It was a joke relax",
+            "You’re so sensitive",
+            "Whatever, I’m done texting you",
+            "Blocked"
+        ];
+
+        const flaggedIndex = 10; // Index of flagged message ("Come on don't be boring")
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const seeMoreButton = document.querySelector(".btn-med-more");
+            const chatBox = document.querySelector(".chat");
+
+            seeMoreButton.addEventListener("click", function () {
+                const start = Math.max(0, flaggedIndex - 10);
+                const end = Math.min(chatThread.length, flaggedIndex + 5);
+                chatBox.innerHTML = ""; // Clear existing message
+
+                for (let i = start; i < end; i++) {
+                    const msg = document.createElement("div");
+                    msg.textContent = chatThread[i];
+                    msg.style.marginBottom = "1vh";
+                    msg.style.padding = "1vh";
+                    msg.style.borderRadius = "6px";
+                    msg.style.backgroundColor = i === flaggedIndex ? "#fff3b0" : "#dac69e";
+                    msg.style.color = "#000";
+                    chatBox.appendChild(msg);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
