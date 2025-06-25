@@ -184,8 +184,66 @@
         input {
             font-size: 22px;
         }
-    </style>
-        <script>
+        .review-container{
+            background-color: #e0e0e0;
+            width: 50%;
+            text-align: center;
+         }
+         .chat{
+            padding: 1vh;
+            width: 30vh;
+            height: fit-content;
+            background-color: #dac69e;
+            text-align: center;
+            border-radius: 10px;
+         }
+         .chat-id{
+            color: #2578BB;
+         }
+         .chat-main{
+            color: black;
+            font-size: medium
+         }
+        .controls{
+            padding-bottom: 1vh;
+        }
+        #spacer{
+            width: 5vh;
+            background-color: #e0e0e0;
+            color: #e0e0e0;
+        }
+        .btn-med-approve{
+            background-color: rgb(47, 202, 106);
+            border-color: aquamarine
+        }
+        .btn-med-more{
+            background-color: #858484;
+            border-color: #a1a0a0
+        }
+        .btn-med-deny{
+            background-color: #b12828;
+            border-color: #d34444
+        }
+        .start{
+            width: 40%;
+            height: fit-content;
+            background-color: #faeed6;
+            text-align: center;
+            padding-bottom: 1vh;
+        }
+        h4{
+            font-size: xx-large;
+            padding-top: 1vh
+        }
+        h5{
+            font-size: x-large
+        }
+        .btn-med-start{
+            background-color: #858484;
+            border-color: #a1a0a0
+        }
+        </style>
+    <script>
         (function () {
             function getCookie(name) {
                 const value = `; ${document.cookie}`;
@@ -219,7 +277,7 @@
     <div class="sidebar">
         <h2>Customer Service</h2>
         <h3>User Admin</h3>
-        <hr style=";">
+        <hr>
         <ul>
             <li><a href="findusers.html">Find user</a></li>
             <li><a href="usertransactions.html">User Transactions</a></li>
@@ -228,7 +286,7 @@
             <li><a href="passwordreset.html">Mass Password Reset</a></li>
         </ul>
         <h3>Billing</h3>
-        <hr style=";">
+        <hr>
         <ul>
             <li><a href="billing/grantmembership.html">Grant Membership</a></li>
             <li><a href="billing/creditcurrencyadjust.html">Adjust Credit & Currency</a></li>
@@ -237,13 +295,13 @@
             <li><a href="billing/purchaseauditlogs.html">Purchase Audit Logs</a></li>
         </ul>
         <h3>Policy Labels</h3>
-        <hr style=";">
+        <hr>
         <ul>
             <li><a href="policylabels/massset.html">Mass Set Policy Labels</a></li>
         </ul>
         <h2>Moderation</h2>
         <h3>Review Queues</h3>
-        <hr style=";">
+        <hr>
         <ul>
             <li><a href="moderation/imagereview.html">Image Review</a></li>
             <li><a href="moderation/chatreview.html">Chat Review</a></li>
@@ -251,7 +309,7 @@
             <li><a href="moderation/userreview.html">User Review</a></li>
         </ul>
         <h3>AI Mod Flows</h3>
-        <hr style=";">
+        <hr>
         <ul>
             <li><a href="moderation/flows/image.html">Image Flow</a></li>
             <li><a href="moderation/flows/chat.html">Chat Flow</a></li>
@@ -260,30 +318,36 @@
         </ul>
     </div>
     <div class="main-content">
+        <center>
+        <div class="start">
+            <h4>Chat Review</h4>
+            <h5>Please press start when ready.</h5>
+            <button class="btn-med-start">Start</button>
+        </div>
+        <div class="review-container hidden">
+            <br>
+            <br>
+            <center>
+            <div class="chat">
+                <a class="chat-id">0123</a>
+                <br>
+                <a class="chat-main">Hello there...</a>
+            </div>
+            </center>
+            <br>
+            <br>
+            <div class="controls">
+                <button class="btn-med-approve">Approve</button>
+                <span id="spacer">111111111</span>
+                <button class="btn-med-more">See More</button>
+                <span id="spacer">111111111</span>
+                <button class="btn-med-deny">Block</button>
+            </div>
+            <div class="action hidden">
+            </div>
+        </div>
+        </center>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Select all buttons on the page
-            const buttons = document.querySelectorAll('button');
-
-            // Add a click event listener to each button
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    setTimeout(() => {
-
-                        // Select all elements with the class "results hidden"
-                        const hiddenElements = document.querySelectorAll('.hidden');
-
-                        // Loop through the hidden elements and remove the "hidden" class
-                        hiddenElements.forEach(element => {
-                            element.classList.remove('hidden');
-                        });
-                    }, 800);
-                });
-            });
-        });
-    </script>
-        </script>
           <script>
     // Function to read a cookie by name
     function getCookie(name) {
@@ -318,6 +382,5 @@
         });
     });
 </script>
-
 </body>
 </html>
