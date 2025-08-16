@@ -312,28 +312,56 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Select all buttons on the page
-            const buttons = document.querySelectorAll('button');
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const resultsSection = document.getElementById("resultsid");
+    const resultsTable = resultsSection.querySelector("table tr:nth-child(2)");
 
-            // Add a click event listener to each button
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    setTimeout(() => {
+    // Attach event listeners to the 3 submit buttons
+    const buttons = document.querySelectorAll('.form-group button');
 
-                        // Select all elements with the class "results hidden"
-                        const hiddenElements = document.querySelectorAll('.hidden');
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', async () => {
+            const inputs = document.querySelectorAll('.form-group input');
+            const queryParam = ["id", "username", "email"][index];
+            const queryValue = inputs[index].value.trim();
 
-                        // Loop through the hidden elements and remove the "hidden" class
-                        hiddenElements.forEach(element => {
-                            element.classList.remove('hidden');
-                        });
-                    }, 800);
-                });
-            });
+            if (!queryValue) {
+                alert("Please enter a value");
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/userlookup?${queryParam}=${encodeURIComponent(queryValue)}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+
+                // Fill table cells with API response
+                const cells = resultsTable.querySelectorAll("td");
+                cells[0].innerHTML = `<a class="bigger" href="/user/${data.id}">${data.username}</a>`;
+                cells[1].textContent = data.id;
+                cells[2].textContent = data.online ?? "null";
+                cells[3].textContent = data.email;
+                cells[4].textContent = data.roleset ?? "null";
+                cells[5].textContent = data.creation_date ?? "null";
+                cells[6].textContent = data.last_activity ?? "null";
+                cells[7].innerHTML = `<a href="/action.html?userid=${data.id}">Perform Action</a>`;
+
+                resultsSection.classList.remove("hidden");
+
+            } catch (err) {
+                console.error(err);
+                alert("Error fetching user data.");
+            }
         });
-    </script>
+    });
+});
+</script>
+
       <script>
     // Function to read a cookie by name
     function getCookie(name) {
